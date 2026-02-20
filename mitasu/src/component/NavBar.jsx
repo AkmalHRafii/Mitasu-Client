@@ -27,6 +27,9 @@ function NavBar() {
                         <NavLink to="/search-anime">
                             <span className="mr-15 ml-15 hover:bg-neutral-500 cursor-pointer rounded-full p-2">Search</span>
                         </NavLink>
+                        <NavLink to="/mywork">
+                            <span className="mr-15 ml-15 hover:bg-neutral-500 cursor-pointer rounded-full p-2">My Work</span>
+                        </NavLink>
                     </div>
                     <div className="m-auto">
                         <a className="cursor-pointer hover:bg-neutral-500 cursor-pointer rounded-full p-2" onClick={handleLogout}>Log out</a>

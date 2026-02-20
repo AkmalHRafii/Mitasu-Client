@@ -7,7 +7,9 @@ import BaseLayout from "./component/BaseLayout"
 import SearchAnime from "./pages/SearchAnime"
 import TopAnime from "./pages/TopAnime"
 import Recommend from "./pages/Recommend"
-
+import MyWork from "./pages/MyWork"
+import AddMyWork from "./pages/AddMyWork"
+import EditMyWork from "./pages/EditMyWork"
 
 
 function App() {
@@ -25,6 +27,9 @@ function App() {
           <Route path="/top-anime" element={<TopAnime />} />
           <Route path="/search-anime" element={<SearchAnime />} />
           <Route path="/recommend" element={<Recommend />} />
+          <Route path="/mywork" element={<MyWork />} />
+          <Route path="/add-my-work" element={<AddMyWork />} />
+          <Route path="/edit-my-work/:id" element={<EditMyWork />} />
         </Routes>
       </BrowserRouter>
     </>
