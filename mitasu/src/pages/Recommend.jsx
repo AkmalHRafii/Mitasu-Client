@@ -2,6 +2,7 @@ import { useState, useEffect } from "react"
 import NavBar from "../component/NavBar"
 import axios from "axios"
 import BaseURL from "../assets/BaseURL"
+import Toastify from 'toastify-js'
 
 function Recommend() {
     const [response, setResponse] = useState({})
@@ -17,14 +18,37 @@ function Recommend() {
                 }
             })
             console.log(data)
-            setResponse(JSON.parse(data.recommendations))
-            setRecommend(response.recommendations)
-            setReason(response.reasoning)
-            console.log(response.recommendations)
-            console.log(response.reasoning)
-            console.log(response)
+            const parsedData = JSON.parse(data.recommendations)
+            setResponse(parsedData)
+            setRecommend(parsedData.recommendations)
+            setReason(parsedData.reasoning)
+            console.log(parsedData.recommendations)
+            console.log(parsedData.reasoning)
+            console.log(parsedData)
         } catch (error) {
             console.log(error)
+            if (error.response && error.response.status === 500) {
+                Toastify({
+                    text: "Please try again later.",
+                    duration: 3000,
+                    gravity: "top",
+                    position: "right",
+                    style: {
+                        background: "linear-gradient(to right, #ff5f6d, #ffc371)",
+                    },
+                }).showToast();
+            } else {
+                Toastify({
+                    text: "Maybe it reached the limit. Please try again later.",
+                    duration: 3000,
+                    gravity: "top",
+                    position: "right",
+                    style: {
+                        background: "linear-gradient(to right, #ff5f6d, #ffc371)",
+                    },
+                }).showToast();
+            }
+
         } finally {
             setLoadingRecommend(false)
         }

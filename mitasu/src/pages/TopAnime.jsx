@@ -70,16 +70,12 @@ function TopAnime() {
                 </>
             )
             }
-            <nav className="flex justify-center items-center gap-x-2">
+            <nav className="flex justify-center items-center gap-x-2 overflow-auto">
                 <button type="button" className="flex justify-center items-center" onClick={prevP} disabled={currentPage <= 1 ? true : false}><span>Prev</span></button>
                 <div className="flex justify-center items-center gap-x-2">
-                    {pages.map((page) => {
-                        return (
-                            <div key={page}>
-                                <button type="button" className="flex justify-center items-center" onClick={() => handlePage(page)}>{page}</button>
-                            </div>
-                        )
-                    })}
+                    <div key={page}>
+                        <button type="button" className="flex justify-center items-center" onClick={() => handlePage(page)}>{`${page}/${totalPage}`}</button>
+                    </div>
                 </div>
                 <button type="button" className="flex justify-center items-center" onClick={nextP} disabled={currentPage >= totalPage ? true : false}><span>Next</span></button>
             </nav>
