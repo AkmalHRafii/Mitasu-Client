@@ -5,7 +5,6 @@ import BaseURL from "../assets/BaseURL"
 import Toastify from 'toastify-js'
 
 function Recommend() {
-    const [response, setResponse] = useState({})
     const [recommend, setRecommend] = useState([])
     const [reason, setReason] = useState("")
     const [loadingRecommend, setLoadingRecommend] = useState(false)
@@ -17,14 +16,12 @@ function Recommend() {
                     Authorization: `Bearer ${localStorage.getItem("access_token")}`
                 }
             })
+            setRecommend(data.recommendations)
+            setReason(data.reasoning)
+            console.log(data.recommendations)
+            console.log(data.reasoning)
             console.log(data)
-            const parsedData = JSON.parse(data.recommendations)
-            setResponse(parsedData)
-            setRecommend(parsedData.recommendations)
-            setReason(parsedData.reasoning)
-            console.log(parsedData.recommendations)
-            console.log(parsedData.reasoning)
-            console.log(parsedData)
+
         } catch (error) {
             console.log(error)
             if (error.response && error.response.status === 500) {
